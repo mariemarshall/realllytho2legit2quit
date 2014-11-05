@@ -1,0 +1,50 @@
+---
+title       : googleVis-Tutorial
+subtitle    : Based on Gesmann and de Castillo
+author      : Vivek Patil
+job         : Associate Professor of Marketing
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax, interactive]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+
+```{r setOptions, message=FALSE,echo=FALSE}
+library(googleVis)
+#op <- options(gvis.plot.tag='chart')
+```
+
+## Histogram
+
+```{r results='asis'}
+set.seed(123)
+datHist=data.frame(A=rpois(100, 20),
+                   B=rpois(100, 5),
+                   C=rpois(100, 50))
+
+Hist <- gvisHistogram(datHist, options=list(
+  legend="{ position: 'top', maxLines: 2 }",
+  colors="['#5C3292', '#1A8763', '#871B47']",
+  width=750, height=360))
+#plot(Hist)
+print(Hist,file="Hist.html")
+```
+
+ <iframe src="Hist.html" width="800" height= "600"></iframe>
+
+
+## Line Chart
+
+```{r results='asis'}
+df=data.frame(country=c("US", "GB", "BR"), 
+              val1=c(10,13,14), 
+              val2=c(23,12,32))
+Line <- gvisLineChart(df,options=list(width=750, height=500))
+#plot(Line)
+print(Line,file="Line.html")
+```
+
+<iframe src= "line.html" width="800" height= "600"></iframe>
+
